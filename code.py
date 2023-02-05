@@ -38,7 +38,7 @@ class Game:
     def __str__(self):
         return "your level is " + str(self.player_level) + "; you have " + str(self.xp) + " xp" + "\nyou have " + str(self.health) + " hp; you have " + str(self.gold) + " gold" + "\nyour current rank is " + self.rank + "\nyou have " + str(self.gem_count) + " gem/gems"
     def help():
-        print("Basic commands include: north, south, east, west or type advancedHelp for more help)
+        print("Basic commands include: north, south, east, west or type advancedHelp for more help")
     def die(self):
         dice_d20 = random.randrange(1, 20)
         if dice_d20 <= 18:
@@ -207,7 +207,8 @@ def sea_scene():
 def eastern_scene():
     global game
     game.location = eastern_scene
-    map(game.location)
+    loc = "eastern_scene"
+    map(loc)
     print(gstory.eastern_story)
     decision = input('choose either n, w, nw, s or ne\n')
     if decision == 'northeast' or decision == 'ne':
@@ -860,8 +861,10 @@ def bossfight(previous_scene):
 # -=code for the inital choice=-
 def map(scene):
     global game
-    if game.location = "crossroads":
-        map = '''The World's Map on The Crossroads Sign:
+    print (scene)
+    themap = ""
+    if scene == "crossroads":
+        themap = '''The World's Map on The Crossroads Sign:
 
                       North    
                         ||           
@@ -870,8 +873,8 @@ def map(scene):
                       South            
                                
           '''
-    if game.location = "eastern_scene":
-        map = '''The World's Map on The Crossroads Sign:
+    if scene == "eastern_scene":
+        themap = '''The World's Map on The Crossroads Sign:
 
                      Forest   Village Graveyard
                           \\    ||    //
@@ -881,7 +884,7 @@ def map(scene):
                      
                                
           '''
-    print(map)
+    print(themap)
 
 def crossroads():
     global game, test2
@@ -949,6 +952,7 @@ if __name__ == "__main__":
     gconfig = Config()
     game = Game(0, 1, gconfig.default_hero_health,0)
     game.prev_location = ""
+    print(game.gold)
     gstory = Story()
     questlist = ['1. slay 10 Bandits\n', '2. slay 10 undead soldiers\n']
     # #starting intro to game
